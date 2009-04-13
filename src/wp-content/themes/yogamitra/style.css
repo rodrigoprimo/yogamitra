@@ -1,0 +1,88 @@
+/*
+Theme Name: Yoga Mitra
+Theme URI: http://yogamitra.com
+Description: Yoga Migra website theme
+Version: 0.1
+Author: Rodrigo Sampaio Primo
+Author URI: http://rodrigo.hacklab.com.br
+*/
+
+body {
+    background-color: #DFF1FF;
+    margin: 0px;
+}
+
+h2 {
+    color:#022558;
+    font-family:Geneva,Arial,Helvetica,sans-serif;
+    font-size:14px;
+    font-style:italic;
+    font-weight:bold;
+    line-height:25px;
+}
+
+p {
+	color:#123362;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:12px;
+    font-size-adjust:none;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:20px;
+    text-decoration:none;
+}
+
+#header {
+    background-image: url(images/logo_yoga.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 84px;
+}
+
+#contentarea {
+	width: 780px;
+	height: 430px;
+	top: 50%;
+	left: 50%;
+	margin-left: -390px;
+	margin-top: -215px;
+	position: absolute;
+	border: 2px solid #082f69;
+	background-color: #FFFFFF;
+}
+
+#menu {
+    border-top: 1px solid #082f69;
+    background-color: #1f55a4;
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    bottom: 0px;
+}
+
+#menu ul {
+    padding: 13px 0px 0px 0px;
+    margin-top: 0px;
+}
+
+.page_item {
+    list-style: none;
+    display: inline;
+}
+
+.page_item a {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+#postarea {
+    height: 301px;
+    position: relative;
+    background-image: url(images/fundo.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: scroll;
+}
