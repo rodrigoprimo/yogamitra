@@ -33,6 +33,10 @@ p {
     text-decoration:none;
 }
 
+a img {
+    border: 1px solid #222222;
+}
+
 #header {
     background-image: url(images/logo_yoga.png);
     background-repeat: no-repeat;
@@ -64,11 +68,17 @@ p {
 #menu ul {
     padding: 13px 0px 0px 0px;
     margin-top: 0px;
+    width: 100%;
+    text-align: center;
+    font-family: Arial, Times New Roman;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .page_item {
     list-style: none;
     display: inline;
+    padding: 0 5px;
 }
 
 .page_item a {
@@ -84,5 +94,16 @@ p {
     background-image: url(images/fundo.gif);
     background-repeat: no-repeat;
     background-position: center;
-    overflow: scroll;
+    overflow: auto;
+}
+
+.page {
+    width: 478px;
+    left: 50%;
+    margin-left: -232px;
+    position: absolute; 
+}
+
+.entry p {
+    text-align: justify;
 }

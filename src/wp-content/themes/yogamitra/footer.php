@@ -1,5 +1,5 @@
         <div id="menu">
-            <ul><?php wp_list_pages('sort_column=menu_order&title_li='); ?></ul>
+            <ul><?php wp_list_pages('depth=1&sort_column=menu_order&title_li='); ?></ul>
         </div>
     </div>
 <!-- <div id="footer">
