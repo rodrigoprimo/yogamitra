@@ -1,6 +1,9 @@
 <?php
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+/**
+ * @package WordPress
+ * @subpackage Default_Theme
+ */
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
      <title><?php printf(__('%1$s - Comments on %2$s', 'kubrick'), get_option('blogname'), the_title('','',false)); ?></title>
@@ -22,12 +25,11 @@ add_filter('comment_text', 'popuplinks');
 if ( have_posts() ) :
 while( have_posts()) : the_post();
 ?>
-
 <h2 id="comments"><?php _e('Comments', 'kubrick'); ?></h2>
 
 <p><a href="<?php echo get_post_comments_feed_link($post->ID); ?>"><?php _e('<abbr title="Really Simple Syndication">RSS</abbr> feed for comments on this post.', 'kubrick'); ?></a></p>
 
-<?php if ('open' == $post->ping_status) { ?>
+<?php if ( pings_open() ) { ?>
 <p><?php printf(__('The <abbr title="Universal Resource Locator">URL</abbr> to TrackBack this entry is: <em>%s</em>', 'kubrick'), get_trackback_url()); ?></p>
 <?php } ?>
 
@@ -55,7 +57,7 @@ if ( post_password_required($post) ) {  // and it doesn't match the cookie
 	<p><?php _e('No comments yet.', 'kubrick'); ?></p>
 <?php } ?>
 
-<?php if ('open' == $post->comment_status) { ?>
+<?php if ( comments_open() ) { ?>
 <h2><?php _e('Leave a comment', 'kubrick'); ?></h2>
 <p><?php printf(__('Line and paragraph breaks automatic, e-mail address never displayed, <acronym title="Hypertext Markup Language">HTML</acronym> allowed: <code>%s</code>', 'kubrick'), allowed_tags()); ?></p>
 
@@ -64,17 +66,17 @@ if ( post_password_required($post) ) {  // and it doesn't match the cookie
 	<p><?php printf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out &raquo;</a>', 'kubrick'), get_option('siteurl') . '/wp-admin/profile.php', $user_identity, wp_logout_url()); ?></p>
 <?php else : ?>
 	<p>
-	  <input type="text" name="author" id="author" class="textarea" value="<?php echo $comment_author; ?>" size="28" tabindex="1" />
+	  <input type="text" name="author" id="author" class="textarea" value="<?php echo esc_attr($comment_author); ?>" size="28" tabindex="1" />
 	   <label for="author"><?php _e('Name', 'kubrick'); ?></label>
 	</p>
 
 	<p>
-	  <input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="28" tabindex="2" />
+	  <input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="28" tabindex="2" />
 	   <label for="email"><?php _e('E-mail', 'kubrick'); ?></label>
 	</p>
 
 	<p>
-	  <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="28" tabindex="3" />
+	  <input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="28" tabindex="3" />
 	   <label for="url"><?php _e('<abbr title="Universal Resource Locator">URL</abbr>', 'kubrick'); ?></label>
 	</p>
 <?php endif; ?>
@@ -87,7 +89,7 @@ if ( post_password_required($post) ) {  // and it doesn't match the cookie
 
 	<p>
 	  <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-	  <input type="hidden" name="redirect_to" value="<?php echo attribute_escape($_SERVER["REQUEST_URI"]); ?>" />
+	  <input type="hidden" name="redirect_to" value="<?php echo esc_attr($_SERVER["REQUEST_URI"]); ?>" />
 	  <input name="submit" type="submit" tabindex="5" value="<?php _e('Say It!' , 'kubrick'); ?>" />
 	</p>
 	<?php do_action('comment_form', $post->ID); ?>

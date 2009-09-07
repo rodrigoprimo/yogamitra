@@ -1,6 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * @package WordPress
+ * @subpackage Default_Theme
+ */
 
-	<div id="content" class="narrowcolumn">
+get_header(); ?>
+
+	<div id="content" class="narrowcolumn" role="main">
 
 	<?php if (have_posts()) : ?>
 
@@ -31,7 +37,7 @@
 	<?php else : ?>
 
 		<h2 class="center"><?php _e('No posts found. Try a different search?', 'kubrick'); ?></h2>
-		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
+		<?php get_search_form(); ?>
 
 	<?php endif; ?>
 

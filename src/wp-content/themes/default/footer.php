@@ -1,6 +1,12 @@
+<?php
+/**
+ * @package WordPress
+ * @subpackage Default_Theme
+ */
+?>
 
 <hr />
-<div id="footer">
+<div id="footer" role="contentinfo">
 <!-- If you'd like to support WordPress, having the "powered by" link somewhere on your blog is the best way; it's our only promotion or advertising. -->
 	<p>
 		<?php printf(__('%1$s is proudly powered by %2$s', 'kubrick'), get_bloginfo('name'),

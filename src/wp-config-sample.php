@@ -37,7 +37,7 @@ define('DB_COLLATE', '');
  * Chaves únicas de autenticação.
  *
  * Altere cada chave para um frase única!
- * Você pode gerá-las usando {@link https://api.wordpress.org/secret-key/1.1/ WordPress.org secret-key service}
+ * Você pode gerá-las usando {@link http://api.wordpress.org/secret-key/1.1/ WordPress.org secret-key service}
  *
  * @since 2.6.0
  */
