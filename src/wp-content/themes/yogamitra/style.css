@@ -21,8 +21,8 @@ h2 {
     line-height:25px;
 }
 
-p {
-	color:#123362;
+p, ol, ul, table {
+    color:#123362;
     font-family:Verdana,Arial,Helvetica,sans-serif;
     font-size:12px;
     font-size-adjust:none;
@@ -45,15 +45,15 @@ a img {
 }
 
 #contentarea {
-	width: 780px;
-	height: 430px;
-	top: 50%;
-	left: 50%;
-	margin-left: -390px;
-	margin-top: -215px;
-	position: absolute;
-	border: 2px solid #082f69;
-	background-color: #FFFFFF;
+    width: 780px;
+    height: 430px;
+    top: 50%;
+    left: 50%;
+    margin-left: -390px;
+    margin-top: -215px;
+    position: absolute;
+    border: 2px solid #082f69;
+    background-color: #FFFFFF;
 }
 
 #menu {
@@ -106,4 +106,18 @@ a img {
 
 .entry p {
     text-align: justify;
+}
+
+.textoLink {
+    -x-system-font:none;
+    color:#123362;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:12px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:bold;
+    line-height:20px;
+    text-decoration:none;
 }
