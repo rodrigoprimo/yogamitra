@@ -1,6 +1,6 @@
 <?php
 
-if ( ! current_user_can('edit_themes') )
+if ( !defined('ABSPATH') || !current_user_can('manage_options') )
 	wp_die('Cheatin&#8217; uh?');
 
 if ( isset( $_POST['tadv_uninstall'] ) ) {
@@ -16,15 +16,15 @@ if ( isset( $_POST['tadv_uninstall'] ) ) {
 	delete_option('tadv_allbtns');
 ?>
 <div class="updated" style="margin-top:30px;">
-<p><?php _e('All options have been removed from the database. Please', 'tadv'); ?> <a href="plugins.php"><?php _e('disable TinyMCE Advanced.', 'tadv'); ?></a></p>
+<p><?php _e('All options have been removed from the database. You can', 'tadv'); ?> <a href="plugins.php"><?php _e('deactivate TinyMCE Advanced', 'tadv'); ?></a> <?php _e('or', 'tadv'); ?> <a href=""> <?php _e('reload this page', 'tadv'); ?></a> <?php _e('to reset them to the default values.', 'tadv'); ?></p>
 </div>
 <?php
 return;
 }
 
-if ( ! isset($GLOBALS['wp_version']) || version_compare($GLOBALS['wp_version'], '2.7', '<') ) { // if less than 2.7 ?>
+if ( ! isset($GLOBALS['wp_version']) || version_compare($GLOBALS['wp_version'], '2.8', '<') ) { // if less than 2.8 ?>
 <div class="error" style="margin-top:30px;">
-<p><?php _e('This plugin requires WordPress version 2.7 or newer. Please upgrade your WordPress installation or download an', 'tadv'); ?> <a href="http://wordpress.org/extend/plugins/tinymce-advanced/download/"><?php _e('older version of the plugin.', 'tadv'); ?></a></p>
+<p><?php _e('This plugin requires WordPress version 2.8 or newer. Please upgrade your WordPress installation or download an', 'tadv'); ?> <a href="http://wordpress.org/extend/plugins/tinymce-advanced/download/"><?php _e('older version of the plugin.', 'tadv'); ?></a></p>
 </div>
 <?php
 return;
@@ -111,6 +111,7 @@ if ( empty($toolbar_1) && empty($toolbar_2) && empty($toolbar_3) && empty($toolb
 
 	if ( in_array('tablecontrols', $allbtns) ) $plugins[] = 'table';
 	if ( in_array('print', $allbtns) ) $plugins[] = 'print';
+	if ( in_array('iespell', $allbtns) ) $plugins[] = 'iespell';
 	if ( in_array('search', $allbtns) ||
 		in_array('replace', $allbtns) ) $plugins[] = 'searchreplace';
 
@@ -125,7 +126,7 @@ if ( empty($toolbar_1) && empty($toolbar_2) && empty($toolbar_3) && empty($toolb
 	if ( $tadv_options['advimage'] == '1' ) $plugins[] = 'advimage';
 	if ( $tadv_options['contextmenu'] == '1' ) $plugins[] = 'contextmenu';
 
-$buttons = array( 'Kitchen Sink' => 'wp_adv', 'Quote' => 'blockquote', 'Bold' => 'bold', 'Italic' => 'italic', 'Strikethrough' => 'strikethrough', 'Underline' => 'underline', 'Bullet List' => 'bullist', 'Numbered List' => 'numlist', 'Outdent' => 'outdent', 'Indent' => 'indent', 'Allign Left' => 'justifyleft', 'Center' => 'justifycenter', 'Alligh Right' => 'justifyright', 'Justify' => 'justifyfull', 'Cut' => 'cut', 'Copy' => 'copy', 'Paste' => 'paste', 'Link' => 'link', 'Remove Link' => 'unlink', 'Insert Image' => 'image', 'More Tag' => 'wp_more', 'Split Page' => 'wp_page', 'Search' => 'search', 'Replace' => 'replace', '<!--fontselect-->' => 'fontselect', '<!--fontsizeselect-->' => 'fontsizeselect', 'Help' => 'wp_help', 'Full Screen' => 'fullscreen', '<!--styleselect-->' => 'styleselect', '<!--formatselect-->' => 'formatselect', 'Text Color' => 'forecolor', 'Paste as Text' => 'pastetext', 'Paste from Word' => 'pasteword', 'Remove Format' => 'removeformat', 'Clean Code' => 'cleanup', 'Check Spelling' => 'spellchecker', 'Character Map' => 'charmap', 'Print' => 'print', 'Undo' => 'undo', 'Redo' => 'redo', 'Table' => 'tablecontrols', 'Citation' => 'cite', 'Inserted Text' => 'ins', 'Deleted Text' => 'del', 'Abbreviation' => 'abbr', 'Acronym' => 'acronym', 'XHTML Attribs' => 'attribs', 'Layer' => 'layer', 'Advanced HR' => 'advhr', 'View HTML' => 'code', 'Hidden Chars' => 'visualchars', 'NB Space' => 'nonbreaking', 'Sub' => 'sub', 'Sup' => 'sup', 'Visual Aids' => 'visualaid', 'Insert Date' => 'insertdate', 'Insert Time' => 'inserttime', 'Anchor' => 'anchor', 'Style' => 'styleprops', 'Smilies' => 'emotions', 'Insert Movie' => 'media', 'IE Spell' => 'iespell' );
+$buttons = array( 'Kitchen Sink' => 'wp_adv', 'Quote' => 'blockquote', 'Bold' => 'bold', 'Italic' => 'italic', 'Strikethrough' => 'strikethrough', 'Underline' => 'underline', 'Bullet List' => 'bullist', 'Numbered List' => 'numlist', 'Outdent' => 'outdent', 'Indent' => 'indent', 'Allign Left' => 'justifyleft', 'Center' => 'justifycenter', 'Alligh Right' => 'justifyright', 'Justify' => 'justifyfull', 'Cut' => 'cut', 'Copy' => 'copy', 'Paste' => 'paste', 'Link' => 'link', 'Remove Link' => 'unlink', 'Insert Image' => 'image', 'More Tag' => 'wp_more', 'Split Page' => 'wp_page', 'Search' => 'search', 'Replace' => 'replace', '<!--fontselect-->' => 'fontselect', '<!--fontsizeselect-->' => 'fontsizeselect', 'Help' => 'wp_help', 'Full Screen' => 'fullscreen', '<!--styleselect-->' => 'styleselect', '<!--formatselect-->' => 'formatselect', 'Text Color' => 'forecolor', 'Back Color' => 'backcolor', 'Paste as Text' => 'pastetext', 'Paste from Word' => 'pasteword', 'Remove Format' => 'removeformat', 'Clean Code' => 'cleanup', 'Check Spelling' => 'spellchecker', 'Character Map' => 'charmap', 'Print' => 'print', 'Undo' => 'undo', 'Redo' => 'redo', 'Table' => 'tablecontrols', 'Citation' => 'cite', 'Inserted Text' => 'ins', 'Deleted Text' => 'del', 'Abbreviation' => 'abbr', 'Acronym' => 'acronym', 'XHTML Attribs' => 'attribs', 'Layer' => 'layer', 'Advanced HR' => 'advhr', 'View HTML' => 'code', 'Hidden Chars' => 'visualchars', 'NB Space' => 'nonbreaking', 'Sub' => 'sub', 'Sup' => 'sup', 'Visual Aids' => 'visualaid', 'Insert Date' => 'insertdate', 'Insert Time' => 'inserttime', 'Anchor' => 'anchor', 'Style' => 'styleprops', 'Smilies' => 'emotions', 'Insert Movie' => 'media', 'IE Spell' => 'iespell' );
 
 if ( function_exists('moxiecode_plugins_url') ) {
 	if ( moxiecode_plugins_url('imagemanager') ) $buttons['MCFileManager'] = 'insertimage';
@@ -312,7 +313,7 @@ if ( is_array($buttons) ) {
 
 		<p><label for="importcss" class="tadv-box"><?php _e('Import the current theme CSS classes', 'tadv'); ?> &nbsp;
 		<input type="checkbox" class="tadv-chk"  name="importcss" id="importcss" <?php if ( $tadv_options['importcss'] == '1' ) echo ' checked="checked"'; ?> /></label></p>
-		<p style="font-size:11px;"><?php _e('Custom CSS styles can be added in /wp-content/plugins/tinymce-advanced/css/tadv-mce.css. They will be imported and used in TinyMCE. The file has to be downloaded with FTP, edited and uploaded, overwriting the original. Only CSS classes can be added, also <strong>div.my-class</strong> would not work, but <strong>.my-class</strong> will.', 'tadv'); ?></p>
+		<p style="font-size:11px;"><?php _e('Custom CSS styles can be added in', 'tadv'); ?> <a href="plugin-editor.php?file=tinymce-advanced/css/tadv-mce.css&amp;plugin=tinymce-advanced/tinymce-advanced.php"> <?php _e('/wp-content/plugins/tinymce-advanced/css/tadv-mce.css.', 'tadv'); ?></a> <?php _e('They will be imported and used in TinyMCE. Only CSS classes will be used, also <strong>div.my-class</strong> would not work, but <strong>.my-class</strong> will.', 'tadv'); ?></p>
 		<p><label for="fix_autop" class="tadv-box"><?php _e('Stop removing the &lt;p&gt; and &lt;br /&gt; tags when saving and show them in the HTML editor', 'tadv'); ?> &nbsp;
 		<input type="checkbox" class="tadv-chk"  name="fix_autop" id="fix_autop" <?php if ( $tadv_options['fix_autop'] == '1' ) echo ' checked="checked"'; ?> /></label></p>
 		<p style="font-size:11px;"><?php _e('This will make it possible to use more advanced HTML without the back-end filtering affecting it much. It also preserves empty new lines in the editor by padding them with &lt;br /&gt; tags.', 'tadv'); ?></p>
@@ -330,10 +331,10 @@ if ( is_array($buttons) ) {
 ?>
 	</table>
 
-<p class="submit">
+<p>
 	<?php wp_nonce_field( 'tadv-save-buttons-order' ); ?>
-	<input type="button" value="<?php _e('Save Changes', 'tadv'); ?>" onclick="tadvSortable.serialize();" />
-	<input type="button" class="tadv_btn" value="<?php _e('Uninstall', 'tadv'); ?>" onclick="document.getElementById('tadv_uninst_div').style.display = 'block';" />
+	<input class="button tadv_btn" type="button" class="tadv_btn" value="<?php _e('Remove Settings', 'tadv'); ?>" onclick="document.getElementById('tadv_uninst_div').style.display = 'block';" />
+	<input class="button-primary tadv_btn" type="button" value="<?php _e('Save Changes', 'tadv'); ?>" onclick="tadvSortable.serialize();" />
 </p>
 </form>
 
@@ -344,7 +345,7 @@ if ( is_array($buttons) ) {
 <div id="tadv_uninst_div" style="">
 <form method="post" action="">
 <?php wp_nonce_field('tadv-uninstall'); ?>
-<div><?php _e('Uninstalling will remove all saved settings from the database.', 'tadv'); ?>
+<div><?php _e('Remove all saved settings from the database?', 'tadv'); ?>
 <input class="button tadv_btn" type="button" name="cancel" value="<?php _e('Cancel', 'tadv'); ?>" onclick="document.getElementById('tadv_uninst_div').style.display = 'none';" style="margin-left:20px" />
 <input class="button tadv_btn" type="submit" name="tadv_uninstall" value="<?php _e('Continue', 'tadv'); ?>" /></div>
 </form>

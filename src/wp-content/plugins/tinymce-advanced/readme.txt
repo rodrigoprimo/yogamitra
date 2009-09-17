@@ -2,9 +2,9 @@
 Contributors: Andrew Ozz
 Donate link: 
 Tags: wysiwyg, formatting, tinymce, write, edit, post
-Requires at least: 2.7
-Tested up to: 2.7
-Stable tag: 3.2
+Requires at least: 2.8
+Tested up to: 2.8
+Stable tag: 3.2.4
 
 Enables most of the advanced features of TinyMCE, the WordPress WYSIWYG editor. 
 
@@ -12,7 +12,7 @@ Enables most of the advanced features of TinyMCE, the WordPress WYSIWYG editor.
 
 This plugin adds 15 plugins to [TinyMCE](http://tinymce.moxiecode.com/): Advanced hr, Advanced Image, Advanced Link, Context Menu, Emotions (Smilies), Date and Time, IESpell, Layer, Nonbreaking, Print, Search and Replace, Style, Table, Visual Characters and XHTML Extras. 
 
-Version 2.0 includes an admin page for arranging the TinyMCE toolbar buttons, easy installation, a lot of bugfixes, customized "Smilies" plugin that uses the built-in WordPress smilies, etc. The admin page uses Scriptaculous and Prototype.js (similar to the "Widgets" admin page) that lets you "drag and drop" the TinyMCE buttons to arrange your own toolbars and enables/disables the corresponding plugins depending on the used buttons.
+Version 2.0 includes an admin page for arranging the TinyMCE toolbar buttons, easy installation, a lot of bugfixes, customized "Smilies" plugin that uses the built-in WordPress smilies, etc. The admin page uses jQuery and jQuery UI that lets you "drag and drop" the TinyMCE buttons to arrange your own toolbars and enables/disables the corresponding plugins depending on the used buttons.
 
 Version 2.1: Improved language selection, improved compatibility with WordPress 2.3 and TinyMCE 2.1.1.1, option to override some of the imported css classes and other small improvements and bugfixes.
 
@@ -25,6 +25,8 @@ Version 3.0.1: Compatibility with WordPress 2.5.1 and TinyMCE 3.0.7, added optio
 Version 3.1: Compatibility with WordPress 2.6 and TinyMCE 3.1, keeps empty paragrarhs when disabling the removal of P and BR tags, the buttons for MCImageManager and MCFileManager can be arranged (if installed).
 
 Version 3.2: Compatibility with WordPress 2.7 and TinyMCE 3.2, minor bug fixes.
+
+Version 3.2.4: Compatibility with WordPress 2.8 and TinyMCE 3.2.4, minor bug fixes.
 
 **Language Support:** The plugin interface in only in English, but the TinyMCE plugins include several translations: German, French, Italian, Spanish, Portuguese, Russian, Chinese and Japanese. More translations are available at the [TinyMCE web site](http://tinymce.moxiecode.com/download_i18n.php).
 

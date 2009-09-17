@@ -3,7 +3,7 @@
 Plugin Name: TinyMCE Advanced
 Plugin URI: http://www.laptoptips.ca/projects/tinymce-advanced/
 Description: Enables advanced features and plugins in TinyMCE.
-Version: 3.2
+Version: 3.2.4
 Author: Andrew Ozz
 Author URI: http://www.laptoptips.ca/
 
@@ -36,7 +36,7 @@ if ( ! function_exists('tadv_add_scripts') ) {
 if ( ! function_exists('tadv_activate') ) {
 	function tadv_activate() {
 
-		@include_once( WP_PLUGIN_DIR . '/tinymce-advanced/tadv_defaults.php');
+		@include_once('tadv_defaults.php');
 		$tadv_options = array( 'advlink' => 1, 'advimage' => 1, 'importcss' => 0, 'contextmenu' => 0, 'tadvreplace' => 0 );
 
 		if ( isset($tadv_toolbars) ) {
@@ -55,7 +55,7 @@ add_action( 'activate_tinymce-advanced/tinymce-advanced.php', 'tadv_activate' );
 
 if ( ! function_exists('tdav_css') ) {
 	function tdav_css($wp) {
-		$tadv_options = (array) get_option('tadv_options');
+		$tadv_options = get_option('tadv_options', array());
 
 		if ( $tadv_options['importcss'] == '1' )
 			$wp .= ',' . get_bloginfo('stylesheet_url');
@@ -93,7 +93,7 @@ if ( ! function_exists('tdav_get_file') ) {
 $tadv_allbtns = array();
 $tadv_hidden_row = 0;
 
-if ( is_admin() && ! defined('DOING_AJAX') ) {
+if ( is_admin() && !defined('DOING_AJAX') && !defined('DOING_CRON') ) {
 	get_option('tadv_options');
 	get_option('tadv_toolbars');
 	get_option('tadv_plugins');
@@ -213,7 +213,7 @@ if ( ! function_exists('tmce_init') ) {
 			wp_enqueue_script( 'tadv_replace', WP_PLUGIN_URL . '/tinymce-advanced/js/tadv_replace.js', array('editor'), '20080425' );
 	}
 }
-add_action( 'admin_print_scripts', 'tmce_init' );
+add_action( 'admin_enqueue_scripts', 'tmce_init', 25 );
 
 if ( ! function_exists('tadv_load_plugins') ) {
 	function tadv_load_plugins($plug) {
@@ -231,7 +231,7 @@ add_action( 'mce_external_plugins', 'tadv_load_plugins', 999 );
 
 if ( ! function_exists('tadv_load_langs') ) {
 	function tadv_load_langs($langs) {
-		$tadv_plugins = (array) get_option('tadv_plugins');
+		$tadv_plugins = get_option('tadv_plugins', array());
 		$langpath = WP_PLUGIN_DIR . '/tinymce-advanced/mce/';
 		$nolangs = array( 'bbcode', 'contextmenu', 'insertdatetime', 'layer', 'nonbreaking', 'print', 'visualchars', 'emotions', 'tadvreplace' );
 
@@ -261,5 +261,3 @@ if ( ! function_exists('tadv_menu') ) {
 	}
 }
 add_action( 'admin_menu', 'tadv_menu' );
-
-?>
