@@ -21,7 +21,7 @@ h2 {
     line-height:25px;
 }
 
-p, ol, ul, table {
+p, ol, ul, table, div.stray_quote {
     color:#123362;
     font-family:Verdana,Arial,Helvetica,sans-serif;
     font-size:12px;
@@ -31,6 +31,11 @@ p, ol, ul, table {
     font-weight:normal;
     line-height:20px;
     text-decoration:none;
+}
+
+div.stray_quote {
+    text-align: center;
+    font-weight: bold;
 }
 
 a img {
